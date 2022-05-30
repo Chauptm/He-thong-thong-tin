@@ -1,0 +1,67 @@
+.container-login {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    top: 20%;
+}
+
+.wrapper-login {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+.wrapper-login h2 {
+    color: #003C71;
+}
+
+.wrapper-login input {
+    width: 200px;
+    height: 26px;
+    border: 1px solid #cccccc;
+    background-color: #f5f5f5;
+    font-size: 18px;
+    display: block;
+    position: relative;
+    margin: 20px auto;
+}
+
+input::placeholder {
+    color: #a1a1a1;
+    font-size: 14px;
+}
+
+.wrapper-login h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+#submit {
+    width: 200px;
+    height: 42px;
+    border: 1px solid #003C71;
+    background-color: #003C71;
+    color: #ffffff;
+    font-size: 20px;
+    margin: 20px 0px 0px 0px;
+}
+
+#submit:hover {
+    border: 1px solid #00C1DE;
+    background-color: #00C1DE;
+    transition: 0.15s ease-in;
+}
+
+.options a {
+    color: #003C71;
+}
+
+.options a:hover {
+    color: #00C1DE;
+    transition: 0.20s ease-in;
+    text-decoration: none;
+}
+
+.invalidFeedback {
+    color: #ff0000;
+    display: block;
+}

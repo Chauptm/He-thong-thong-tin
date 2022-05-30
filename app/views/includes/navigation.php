@@ -1,24 +1,30 @@
 <nav class="top-nav">
     <ul>
         <li>
-            <a href="<?php echo URLROOT; ?>/index">Home</a>
+            <a href="http://">
+                <img src="https://www.ivivu.com/du-lich/content/img/logo.svg" alt="">
+            </a>
+        </li>
+        <li class= "active">
+            <a href="<?php echo URLROOT; ?>/index"> Khach san </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/about">About</a>
+            <a href="<?php echo URLROOT; ?>/tour">Tours</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/projects">Projects</a>
+            <a href="<?php echo URLROOT; ?>/index">Ve may bay</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/posts">Blog</a>
+            <a href="<?php echo URLROOT; ?>/index">An uong</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/contact">Contact</a>
+            <i class="fas fa-angle-double-down"></i>
         </li>
         <li class="btn-login">
             <?php if(isset($_SESSION['user_id'])) : ?>
                 <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
             <?php else : ?>
+                <img src="https://www.ivivu.com/du-lich/content/img/avatars/avatar-default-white.svg" alt="">
                 <a href="<?php echo URLROOT; ?>/users/login">Login</a>
             <?php endif; ?>
         </li>
