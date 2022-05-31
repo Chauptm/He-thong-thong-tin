@@ -1,0 +1,15 @@
+.top-nav ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 20px 10px;
+    background-color: #003C71;
+    font-size: 25px;
+}
+
+.top-nav ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+
+

@@ -1,19 +1,24 @@
 <nav class="top-nav">
     <ul>
         <li>
+            <a href="">
+                <img src="" alt="">
+            </a>
+        </li>
+        <li>
             <a href="<?php echo URLROOT; ?>/index">Home</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/about">About</a>
+            <a href="<?php echo URLROOT; ?>/tours">Tours</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/projects">Projects</a>
+            <a href="<?php echo URLROOT; ?>/">Vé máy bay</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/posts">Blog</a>
+            <a href="<?php echo URLROOT; ?>/contact">Ăn uống</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/contact">Contact</a>
+            <a href="<?php echo URLROOT; ?>/contact"></a>
         </li>
         <li class="btn-login">
             <?php if(isset($_SESSION['user_id'])) : ?>
