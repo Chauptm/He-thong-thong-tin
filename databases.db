@@ -1,0 +1,89 @@
+CREATE TABLE if not EXISTS Users (
+id int PRIMARY KEY AUTO_INCREMENT,
+username varchar(63),
+email text,
+first_name text,
+last_naem text,
+address text,
+number_phone text,
+password text,
+role int,
+create_at datetime,
+last_update datetime
+)engine= INNODB;
+
+CREATE TABLE if not EXISTS Topics (
+id int PRIMARY KEY AUTO_INCREMENT,
+user_id int,
+name text,
+create_at datetime,
+last_update datetime
+)engine= INNODB;
+
+CREATE TABLE if not EXISTS Tours (
+id int PRIMARY KEY AUTO_INCREMENT,
+user_id int,
+name text,
+add_from text,
+add_to text,
+topic_id int,
+min_person int,
+max_person int,
+price_per_person int,
+start_date date,
+end_date date,
+introduce text,
+tour_guide_id int,
+create_at datetime,
+last_update datetime
+)engine= INNODB;
+
+CREATE TABLE if not EXISTS DescribeTours (
+id int PRIMARY KEY AUTO_INCREMENT,
+tour_id int,
+vehicle text,
+hotel text,
+sum_date text,
+location text,
+active text,
+create_at datetime,
+last_update datetime
+)engine= INNODB;
+
+
+CREATE TABLE if not EXISTS Bookings (
+id int PRIMARY KEY AUTO_INCREMENT,
+tour_id int,
+user_id int,
+price int,
+status int,
+create_at datetime,
+last_update datetime
+)engine= INNODB;
+
+CREATE TABLE if not EXISTS DoneTours (
+id int PRIMARY KEY AUTO_INCREMENT,
+user_id int,
+booking_id int,
+status int,
+reason text,
+create_at datetime
+)engine= INNODB;
+
+CREATE TABLE if not EXISTS Reviews (
+id int PRIMARY KEY AUTO_INCREMENT,
+user_id int,
+tour_id int,
+review text,
+reason text,
+create_at datetime,
+last_update datetime
+)engine= INNODB;
+
+CREATE TABLE if not EXISTS CheckWorks (
+id int PRIMARY KEY AUTO_INCREMENT,
+user_id int,
+tour_id int,
+status int,
+create_at datetime
+)engine= INNODB;

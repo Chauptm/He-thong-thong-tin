@@ -1,0 +1,108 @@
+#index-container{
+    width: 100%;
+    position: relative;
+    top: -20px;
+}
+#index-container .index-image{
+    position: relative;
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    height: 530px;
+}
+
+.index-image .index-body{
+    position: absolute;
+    top: 10px;
+    width: 40%;
+    margin-left: 20%;
+}
+
+.index-body .index-content{
+    color: #ffffff;
+}
+.index-body .index-content h1{
+    font-size: 40;
+}
+
+.index-body .index-content h3{
+    font-size: 22;
+}
+
+.index-body .index-form{
+    background-color: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.index-form .add-to {
+    background-color: #ffffff;
+    padding: 20px 20px;
+    border-radius: 5px;
+}
+.index-form .add-to input{
+    border: #ffffff;
+    margin-left: 20px;
+}
+
+.index-form .date-time{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+.date-time .time input{
+    border-radius: 5px;
+    border: #ffffff;
+    padding: 20px ;
+    width: 300px;
+}
+.date-time .add_from {
+    margin-left: 15px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    width: 300px;
+}
+*:focus{
+    outline: none;
+}
+
+.date-time .add_from i{
+    margin-left: 20px;
+}
+.date-time .add_from input{
+    padding: 20px;
+    border: #ffffff;
+}
+
+.date-time .form-button {
+    margin-left: 15px;
+}
+
+.date-time .form-button input{
+    padding: 20px 35px;
+    border-radius: 5px;
+    border: 1px solid #f79321;
+    background-color: #f79321;
+}
+
+.date-time .form-button input:hover{
+    background-color: #e98e07;
+    border: 1px solid #e98e07;
+}
+.index-form .content-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.content-form p{
+    color:  #ffffff;
+}
+.content-form input{
+    margin-left: 20px;
+    background-color: rgba(255,255,255,0.3);
+    border-color: #fff;
+    border-radius: 5px;
+    height: 35px;
+    color: #ffffff;
+}
+

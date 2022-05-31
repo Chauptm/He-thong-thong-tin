@@ -1,15 +1,54 @@
+
 .top-nav ul{
     display: flex;
     justify-content: space-between;
-    list-style-type: none;
-    padding: 20px 10px;
+    width: 60%;
+    padding: 0px 20%;
     background-color: #003C71;
-    font-size: 25px;
+    font-size: 23px;
+    align-items: center;
+}
+
+.top-nav ul li{
+    list-style-type: none;
+    margin-right: 4%;
+    cursor: pointer;
+    padding: 10px 0px;
+}
+.top-nav ul li:last-child{
+    flex: 2;
+    margin-left: 10%;
+    
+}
+.top-nav .fas{
+    color: #ffffff;
 }
 
 .top-nav ul li a{
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
 }
+.top-nav ul .btn-login {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.top-nav ul .btn-login img{
+    width: 15%;
+    margin-right: 5%;
+}
 
+.top-nav ul .active a {
+    border-bottom: 2px solid #FFBD00;
+    color: #00C1DE;
+}
 
+.top-nav ul .btn-login:hover{
+    color: #00C1DE;
+    transition: 0.15s ease-in;
+}
+
+.top-nav ul li a:hover {
+    color: #00C1DE;
+    transition: 0.15s ease-in;
+}
