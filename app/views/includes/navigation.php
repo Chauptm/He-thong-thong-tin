@@ -1,21 +1,21 @@
 <nav class="top-nav">
-    <ul>
+    <ul class="menu">
         <li>
             <a href="http://">
                 <img src="https://www.ivivu.com/du-lich/content/img/logo.svg" alt="">
             </a>
         </li>
         <li class= "active">
-            <a href="<?php echo URLROOT; ?>/index"> Khach san </a>
+            <a href="<?php echo URLROOT; ?>/index">Khách sạn </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/tour">Tours</a>
+            <a href="<?php echo URLROOT; ?>/tours/tours">Tours</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/index">Ve may bay</a>
+            <a href="<?php echo URLROOT; ?>/index">Vé máy bay</a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/index">An uong</a>
+            <a href="<?php echo URLROOT; ?>/index">Ăn uống</a>
         </li>
         <li>
             <i class="fas fa-angle-double-down"></i>
@@ -25,8 +25,9 @@
                 <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
             <?php else : ?>
                 <img src="https://www.ivivu.com/du-lich/content/img/avatars/avatar-default-white.svg" alt="">
-                <a href="<?php echo URLROOT; ?>/users/login">Login</a>
+                <a href="<?php echo URLROOT; ?>/users/login">Đăng nhập</a>
             <?php endif; ?>
         </li>
     </ul>
 </nav>
+
