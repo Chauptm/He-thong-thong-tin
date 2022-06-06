@@ -7,5 +7,8 @@
         public function tours() {  
             $this->view('tours/tours');
         }
+        public function detail() {  
+            $this->view('tours/detail');
+        }
     }
 ?>

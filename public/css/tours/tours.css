@@ -12,7 +12,7 @@
     position: relative;
     background-image: url(../../img/background.jpg);
     background-repeat: no-repeat;
-    height: 100%;
+    height: 57%;
     width: 100%;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .index-body .index-content h3{
-    font-size: 22;
+    font-size: 22px;
 }
 
 .index-body .index-form{
@@ -116,5 +116,77 @@
     color: #ffffff;
 }
 #index-container .index-select{
-    display: block;
+    display: flex;
+    flex-direction: row;
+    padding: 1% 12.5%;
+    background-color: rgba(0,60,113,0.05);
+
+}
+
+.index-select .select-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-right: 7%;
+}
+.index-select .select-item .fa-check-circle {
+    font-size: 40px;
+    color: #003C71;
+    margin-right: 20px;
+}
+
+.index-select .select-item p {
+    color: #003C71;
+    font-weight: bold;
+    width: 200px;
+}
+
+#index-container .tours{
+    padding: 1% 12.5%;
+}
+
+.tour .tour-name{
+    font-size: 35px;
+    font-weight: bold;
+    opacity: 0.8;
+}
+.tour .tour-info {
+    margin-top: 5px;
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+.tour .tour-detail {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    
+}
+
+.tour-detail .tour-item{
+    max-width: 25%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    padding: 1%;
+    min-height: 40%;
+    border:  1px solid #e4e4e6;
+    border-radius: 2px;
+    background-color: rgba(0,60,113,0.05);
+}
+
+.tour-item .tour-item-name a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: #003C71;
+}
+.tour-item div{
+    margin: 2% 0;
+}
+
+.tour-detail .tour-item:hover{
+    background-color: #29b6f6;
+    border: 1px solid #29b6f6;
+    transition: all .2s ease-in-out
 }

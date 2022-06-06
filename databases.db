@@ -3,7 +3,7 @@ id int PRIMARY KEY AUTO_INCREMENT,
 username varchar(63),
 email text,
 first_name text,
-last_naem text,
+last_name text,
 address text,
 number_phone text,
 password text,
@@ -17,7 +17,8 @@ id int PRIMARY KEY AUTO_INCREMENT,
 user_id int,
 name text,
 create_at datetime,
-last_update datetime
+last_update datetime,
+foreign key (user_id) references Users(id)
 )engine= INNODB;
 
 CREATE TABLE if not EXISTS Tours (
@@ -35,7 +36,10 @@ end_date date,
 introduce text,
 tour_guide_id int,
 create_at datetime,
-last_update datetime
+last_update datetime,
+foreign key (user_id) references Users(id),
+foreign key (topic_id) references Topics(id),
+foreign key (tour_guide_id) references Users(id)
 )engine= INNODB;
 
 CREATE TABLE if not EXISTS DescribeTours (
@@ -47,7 +51,8 @@ sum_date text,
 location text,
 active text,
 create_at datetime,
-last_update datetime
+last_update datetime,
+foreign key (tour_id) references Tours(id)
 )engine= INNODB;
 
 
@@ -58,7 +63,9 @@ user_id int,
 price int,
 status int,
 create_at datetime,
-last_update datetime
+last_update datetime,
+foreign key (tour_id) references Tours(id),
+foreign key (user_id) references Users(id)
 )engine= INNODB;
 
 CREATE TABLE if not EXISTS DoneTours (
@@ -67,7 +74,9 @@ user_id int,
 booking_id int,
 status int,
 reason text,
-create_at datetime
+create_at datetime,
+foreign key (user_id) references Users(id),
+foreign key (booking_id) references Bookings(id)
 )engine= INNODB;
 
 CREATE TABLE if not EXISTS Reviews (
@@ -77,7 +86,9 @@ tour_id int,
 review text,
 reason text,
 create_at datetime,
-last_update datetime
+last_update datetime,
+foreign key (tour_id) references Tours(id),
+foreign key (user_id) references Users(id)
 )engine= INNODB;
 
 CREATE TABLE if not EXISTS CheckWorks (
@@ -85,5 +96,7 @@ id int PRIMARY KEY AUTO_INCREMENT,
 user_id int,
 tour_id int,
 status int,
-create_at datetime
+create_at datetime,
+foreign key (tour_id) references Tours(id),
+foreign key (user_id) references Users(id)
 )engine= INNODB;
