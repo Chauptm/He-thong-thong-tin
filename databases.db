@@ -45,6 +45,7 @@ foreign key (tour_guide_id) references Users(id)
 CREATE TABLE if not EXISTS DescribeTours (
 id int PRIMARY KEY AUTO_INCREMENT,
 tour_id int,
+describetour text,
 vehicle text,
 hotel text,
 sum_date text,

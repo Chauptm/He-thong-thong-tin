@@ -3,32 +3,27 @@
     position: relative;
 }
 .top-nav ul{
-    margin: 0;
-    padding: 0px 10%;
+    margin: 25px 0;
+    padding: 0 10%;
     position: absolute;
-    top: 30%;
+    top: 20%;
 
 }
 
 .top-nav ul li{
     display: inline-block;
     margin-left: 35px;
+    margin-bottom: 20px;
 }
 .top-nav ul li:last-child{
-    margin-left: 200px;
+    margin-left: 340px;
     
-}
-.top-nav .fas{
-    color: #ffffff;
 }
 
 .top-nav ul li a{
     color: #ffffff;
     text-decoration: none;
     font-size: 20px;
-}
-.top-nav ul .btn-login img{
-    width: 40px;
 }
 
 .active a {

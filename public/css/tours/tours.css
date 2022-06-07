@@ -12,14 +12,14 @@
     position: relative;
     background-image: url(../../img/background.jpg);
     background-repeat: no-repeat;
-    height: 57%;
+    height: 80%;
     width: 100%;
 }
 
 .index-image .index-body{
     position: absolute;
     top: 10px;
-    width: 50%;
+    width: 780px;
     margin-left: 12.5%;
 }
 
@@ -91,6 +91,8 @@
     border-radius: 5px;
     border: 1px solid #f79321;
     background-color: #f79321;
+    color: #ffffff;
+    font-weight: bold;
 }
 
 .date-time .form-button input:hover{
@@ -120,14 +122,14 @@
     flex-direction: row;
     padding: 1% 12.5%;
     background-color: rgba(0,60,113,0.05);
-
+    position: relative;
 }
 
 .index-select .select-item {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-right: 7%;
+    
 }
 .index-select .select-item .fa-check-circle {
     font-size: 40px;
@@ -165,27 +167,34 @@
 }
 
 .tour-detail .tour-item{
-    max-width: 25%;
-    margin-right: 5%;
+    width: 25%;
+    margin-right: 8%;
     margin-bottom: 5%;
-    padding: 1%;
-    min-height: 40%;
+}
+.tour-item .tour-image img{
+    width: 100%;
+    height: auto;
+}
+.tour-item .tour-body{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgba(0,60,113,0.05);
     border:  1px solid #e4e4e6;
     border-radius: 2px;
-    background-color: rgba(0,60,113,0.05);
-}
+    padding: 4%;
 
-.tour-item .tour-item-name a{
+}
+.tour-body .tour-item-name a{
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
     color: #003C71;
 }
-.tour-item div{
+.tour-body div{
     margin: 2% 0;
 }
 
-.tour-detail .tour-item:hover{
+.tour-item .tour-body:hover{
     background-color: #29b6f6;
     border: 1px solid #29b6f6;
     transition: all .2s ease-in-out
