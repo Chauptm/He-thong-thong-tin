@@ -15,7 +15,7 @@
         
         <li class="btn-login">
             <?php if(isset($_SESSION['user_id'])) : ?>
-                <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
+                <a href="<?php echo URLROOT; ?>/users/logout">Đăng xuất</a>
             <?php else : ?>
                 <a href="<?php echo URLROOT; ?>/users/login">Đăng nhập</a>
             <?php endif; ?>

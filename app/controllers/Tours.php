@@ -10,5 +10,23 @@
         public function detail() {  
             $this->view('tours/detail');
         }
+
+        public function createAdmin() {
+            $this->view('tours/create');
+        }
+
+        public function editAdmin(){
+            $this->view('tours/edit');
+        }
+
+        public function detailAdmin(){
+            $this->view('tours/detailAdmin');
+        }
+
+        public function deleteAdmin(){
+            
+        }
+
+
     }
 ?>
