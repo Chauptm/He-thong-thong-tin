@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "*.db": "sql",
-        "*.tpl": "html",
-        "*.base": "html"
-    }
-}
