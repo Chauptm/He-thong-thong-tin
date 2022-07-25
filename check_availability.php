@@ -15,11 +15,11 @@
 			$cnt=1;
 			if($query -> rowCount() > 0)
 			{
-			echo "<span style='color:red'> Email already exists .</span>";
+			echo "<span style='color:red'> Email đã tồn tại.</span>";
 			echo "<script>$('#submit').prop('disabled',true);</script>";
 			} else{
 				
-				echo "<span style='color:green'> Email available for Registration .</span>";
+				echo "<span style='color:green'> Email hợp lệ.</span>";
 			echo "<script>$('#submit').prop('disabled',false);</script>";
 			}
 		}

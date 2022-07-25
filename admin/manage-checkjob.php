@@ -7,70 +7,21 @@
 	}else{ 
 		if(isset($_REQUEST['bkid'])){
 			$bid=intval($_GET['bkid']);
-			$sql ="SELECT FromDate FROM tblbooking WHERE BookingId=:bid";
-			$query= $dbh -> prepare($sql);
+			
+			$checkjob=1;
+			$sql = "UPDATE tblbooking SET checkjob=:checkjob WHERE  BookingId=:bid";
+			$query = $dbh->prepare($sql);
+			$query -> bindParam(':checkjob',$checkjob, PDO::PARAM_STR);
+			$query-> bindParam(':bid',$bid, PDO::PARAM_STR);
+			$query -> execute();
 
-			$query-> bindParam(':bid', $bid, PDO::PARAM_STR);
-			$query-> execute();
-			$results = $query -> fetchAll(PDO::FETCH_OBJ);
-			if($query->rowCount() > 0){
-				foreach($results as $result){
-					$fromdate= $result->FromDate;
-					$fromdate= strtotime($fromdate);
-					$n = time()+ 47*60*60;
-					if ($n>$fromdate){
-						$status=2;
-						$cancelby='a';
-						$sql = "UPDATE tblbooking SET status=:status,CancelledBy=:cancelby WHERE  BookingId=:bid";
-						$query = $dbh->prepare($sql);
-						$query -> bindParam(':status',$status, PDO::PARAM_STR);
-						$query -> bindParam(':cancelby',$cancelby , PDO::PARAM_STR);
-						$query-> bindParam(':bid',$bid, PDO::PARAM_STR);
-						$query -> execute();
-
-						$msg="Hủy booking thành công";
-					}else {
-						$error = "Thời gian hủy là trong 2 ngày trước ngày xuất phát";
-					}
-				}
-			}
+			$msg="Xác thực công việc thành công";
 		}
-
-
-		if(isset($_REQUEST['bckid'])){
-			$bcid=intval($_GET['bckid']);
-			$sql ="SELECT FromDate FROM tblbooking WHERE BookingId=:bid";
-			$query= $dbh -> prepare($sql);
-
-			$query-> bindParam(':bid', $bcid, PDO::PARAM_STR);
-			$query-> execute();
-			$results = $query -> fetchAll(PDO::FETCH_OBJ);
-			if($query->rowCount() > 0){
-				foreach($results as $result){
-					$fromdate= $result->FromDate;
-					$fromdate= strtotime($fromdate);
-					$n = time()+ 47*60*60;
-					if ($n>$fromdate){
-						$status=1;
-						$cancelby='a';
-						$sql = "UPDATE tblbooking SET status=:status WHERE BookingId=:bcid";
-						$query = $dbh->prepare($sql);
-						$query -> bindParam(':status',$status, PDO::PARAM_STR);
-						$query-> bindParam(':bcid',$bcid, PDO::PARAM_STR);
-						$query -> execute();
-						$msg="Booking đã được xác nhận";
-					}else {
-						$error = "Thời gian xác nhận là trong 2 ngày trước ngày xuất phát";
-					}
-				}
-			}
-		}
-
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-	<title>Quản lý các booking tour</title>
+	<title>Quản lý công việc</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -142,7 +93,7 @@
 				</div>
 <!--heder end here-->
 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a><i class="fa fa-angle-right"></i>Quản lý các booking</li>
+                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a><i class="fa fa-angle-right"></i>Quản lý các công việc</li>
             </ol>
 <div class="agile-grids">	
 				<!-- tables -->
@@ -154,20 +105,17 @@
 					    <table id="table">
 						<thead>
 						  <tr>
-						  <th>Booking id</th>
+						  	<th>Booking id</th>
 							<th>Người đặt</th>
-							<th>Thông tin</th>
 							<th>Tour</th>
 							<th>Ngày đến/Ngày đi</th>
-							<th>Người lớn/Trẻ em</th>
-							<th>Tổng tiền</th>
 							<th>Comment </th>
 							<th>Status </th>
-							<th> </th>
+							<th>Action</th>
 						  </tr>
 						</thead>
 						<tbody>
-						<?php $sql = "SELECT tblbooking.BookingId as bookid,tblusers.FullName as fname,tblusers.MobileNumber as mnumber,tblusers.EmailId as email,tbltourpackages.PackageName as pckname,tblbooking.PackageId as pid,tblbooking.Adults as adults, tblbooking.Childs as childs,tblbooking.FromDate as fdate,tblbooking.ToDate as tdate,tblbooking.Comment as comment,tblbooking.status as status,tblbooking.CancelledBy as cancelby,tblbooking.UpdationDate as upddate, tblbooking.Price as price from tblusers join  tblbooking on  tblbooking.UserEmail=tblusers.EmailId join tbltourpackages on tbltourpackages.PackageId=tblbooking.PackageId";
+						<?php $sql = "SELECT tblbooking.BookingId as bookid,tblusers.FullName as fname,tbltourpackages.PackageName as pckname,tblbooking.PackageId as pid,tblbooking.FromDate as fdate,tblbooking.ToDate as tdate,tblbooking.Comment as comment,tblbooking.status as status,tblbooking.CancelledBy as cancelby,tblbooking.UpdationDate as upddate, tblbooking.checkjob as checkjob from tblusers join  tblbooking on  tblbooking.UserEmail=tblusers.EmailId join tbltourpackages on tbltourpackages.PackageId=tblbooking.PackageId";
 						$query = $dbh -> prepare($sql);
 						$query->execute();
 						$results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -179,16 +127,13 @@
 						  <tr>
 							<td>#BK-<?php echo htmlentities($result->bookid);?></td>
 							<td><?php echo htmlentities($result->fname);?></td>
-							<td><?php echo htmlentities($result->mnumber);?>/<?php echo htmlentities($result->email);?></td>
 							
 							<td><a href="update-package.php?pid=<?php echo htmlentities($result->pid);?>"><?php echo htmlentities($result->pckname);?></a></td>
 							<td><?php echo htmlentities($result->fdate);?> đến <?php echo htmlentities($result->tdate);?></td>
-							<td><?php echo htmlentities($result->adults);?>/<?php echo htmlentities($result->childs);?></td>
-							<td><?php echo htmlentities($result->price);?></td>
-							<td><?php echo htmlentities($result->comment);?></td>
-							<td><?php if($result->status==0)
+								<td><?php echo htmlentities($result->comment);?></td>
+								<td><?php if($result->status==0)
 					{
-					echo "Đang chờ duyệt";
+					echo "Đang chờ duyệt bởi admin tour";
 					}
 					if($result->status==1)
 					{
@@ -196,7 +141,7 @@
 					}
 					if($result->status==2 and  $result->cancelby=='a')
 					{
-					echo "Đã hủy bởi bạn lúc " .$result->upddate;
+					echo "Đã hủy bởi Admin Tour lúc " .$result->upddate;
 					} 
 					if($result->status==2 and $result->cancelby=='u')
 					{
@@ -206,12 +151,16 @@
 					?></td>
 
 					<?php if($result->status==2){?>
-						<td>Đã hủy</td>
-					<?php } elseif ($result->status==1) {?>
-						<td>Đã xác nhận</td>
-					<?php } else {?>
-						<td><a href="manage-bookings.php?bkid=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Bạn có chắc chắn muốn hủy booking?')" >Hủy</a> / <a href="manage-bookings.php?bckid=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Bạn chắc chắn duyệt booking này?')" >Xác nhận</a></td>
-					<?php }?>
+						<td>Booking đã hủy</td>
+					<?php } elseif ($result->status==0) {?>
+						<td>Đang chờ duyệt</td>
+					<?php } else {
+						if ($result->checkjob==1){?>
+							<td>Done</td>
+						<?php } else {?>
+						<td><a href="manage-checkjob.php?bkid=<?php echo htmlentities($result->bookid);?>" onclick="return confirm('Xác thực công việc?')" >Check</a>
+					<?php }
+						}?>
 
 											</tr>
 											<?php $cnt=$cnt+1;} }?>

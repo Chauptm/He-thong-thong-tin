@@ -16,14 +16,14 @@
 			$query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
 			$query->bindParam(':email',$email,PDO::PARAM_STR);
 			$query->execute();
-			$msg="Profile Updated Successfully";
+			$msg="Thông tin tài khoản đã chỉnh sửa thành công";
 		}
 
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-	<title>TMS | Tourism Management System</title>
+	<title>Thông tin tài khoản</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Tourism Management System In PHP" />
@@ -42,12 +42,6 @@
 	<!-- Custom Theme files -->
 	<script src="js/jquery-1.12.0.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<!--animate-->
-	<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
-	<script src="js/wow.min.js"></script>
-	<script>
-		new WOW().init();
-	</script>
 
 	<style>
 		.errorWrap {
@@ -74,19 +68,19 @@
 			<?php include('includes/header.php');?>
 			<div class="banner-1 ">
 				<div class="container">
-					<h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;">TMS-Tourism Management System</h1>
+					<h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;">Quản lý hệ thống thông tin</h1>
 				</div>
 			</div>
 			<!--- /banner-1 ---->
 			<!--- privacy ---->
 			<div class="privacy">
 				<div class="container">
-					<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">Change Password</h3>
+					<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">Thay đổi thông tin nếu cần</h3>
 					<form name="chngpwd" method="post">
 						<?php if($error){?>
-							<div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div>
+							<div class="errorWrap"><strong>Thất bại</strong>:<?php echo htmlentities($error); ?> </div>
 						<?php } else if($msg){?>
-							<div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php 
+							<div class="succWrap"><strong>Thành công</strong>:<?php echo htmlentities($msg); ?> </div><?php 
 						}?>
 
 						<?php 
@@ -99,40 +93,23 @@
 							$cnt=1;
 							if($query->rowCount() > 0) {
 								foreach($results as $result) {?>
-									<p style="width: 350px;">
-										<b>Name</b>  
-										<input type="text" name="name" value="<?php echo htmlentities($result->FullName);?>" class="form-control" id="name" required="">
-									</p> 
-									<p style="width: 350px;">
-										<b>Mobile Number</b>
-										<input type="text" class="form-control" name="mobileno" maxlength="10" value="<?php echo htmlentities($result->MobileNumber);?>" id="mobileno"  required="">
-									</p>
-									<p style="width: 350px;">
-										<b>Email Id</b>
-										<input type="email" class="form-control" name="email" value="<?php echo htmlentities($result->EmailId);?>" id="email" readonly>
-									</p>
-						<?php 	}
-							} 
-						?>
+									<p style="width: 350px;"><b>Họ và tên</b>  <input type="text" name="name" value="<?php echo htmlentities($result->FullName);?>" class="form-control" id="name" required=""></p> 
+									<p style="width: 350px;"><b>Số điện thoại</b><input type="text" class="form-control" name="mobileno" maxlength="10" value="<?php echo htmlentities($result->MobileNumber);?>" id="mobileno"  required=""></p>
+									<p style="width: 350px;"><b>Email</b><input type="email" class="form-control" name="email" value="<?php echo htmlentities($result->EmailId);?>" id="email" readonly></p>
+							<?php 	}
+								} 
+							?>
 
-						<p style="width: 350px;">
-							<button type="submit" name="submit6" class="btn-primary btn">Updtae</button>
-						</p>
+							<p style="width: 350px;"><button type="submit" name="submit6" class="btn-primary btn">Chỉnh sửa</button></p>
 					</form>
-
-				
 			</div>
 		</div>
-		<!--- /privacy ---->
-		<!--- footer-top ---->
-		<!--- /footer-top ---->
 		<?php include('includes/footer.php');?>
-		<!-- signup -->
+		
 		<?php include('includes/signup.php');?>			
-		<!-- //signu -->
-		<!-- signin -->
+
 		<?php include('includes/signin.php');?>			
-		<!-- //signin -->
+		
 	</body>
 </html>
 <?php } ?>

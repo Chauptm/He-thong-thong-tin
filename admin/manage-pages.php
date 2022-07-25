@@ -16,7 +16,7 @@ $query = $dbh->prepare($sql);
 $query -> bindParam(':pagetype',$pagetype, PDO::PARAM_STR);
 $query-> bindParam(':pagedetails',$pagedetails, PDO::PARAM_STR);
 $query -> execute();
-$msg="Page data updated  successfully";
+$msg="Cập nhật trang thành công";
 
 }
 
@@ -24,7 +24,7 @@ $msg="Page data updated  successfully";
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>TMS | Admin Package Creation</title>
+<title>Quản lý trang</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -107,16 +107,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				</div>
 <!--heder end here-->
 	<ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>Update Page Data </li>
+                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a><i class="fa fa-angle-right"></i>Quản lý trang </li>
             </ol>
 		<!--grid-->
  	<div class="grid-form">
  
 <!---->
   <div class="grid-form1">
-  	       <h3>Update Page Data</h3>
-  	        	  <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+  	       <h3>Quản lý trang</h3>
+  	        	  <?php if($error){?><div class="errorWrap"><strong>Thất bại</strong>:<?php echo htmlentities($error); ?> </div><?php } 
+				else if($msg){?><div class="succWrap"><strong>Thành công</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
   	         <div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							<form class="form-horizontal" name="package" method="post" enctype="multipart/form-data">
@@ -124,66 +124,40 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 									<label for="focusedinput" class="col-sm-2 control-label">Select page</label>
 									<div class="col-sm-8">
 									   <select name="menu1" onChange="MM_jumpMenu('parent',this,0)">
-                  <option value="" selected="selected" class="form-control">***Select One***</option>
-                  <option value="manage-pages.php?type=terms">terms and condition</option>
-                  <option value="manage-pages.php?type=privacy">privacy and policy</option>
-                  <option value="manage-pages.php?type=aboutus">aboutus</option> 
-                  <option value="manage-pages.php?type=contact">Contact us</option>
+                  <option value="" selected="selected" class="form-control">***Chọn trang cần sửa***</option>
+                  <option value="manage-pages.php?type=terms">Chính sách và bảo mật</option>
+                  <option value="manage-pages.php?type=privacy">Điều khoản sử dụng</option>
+                  <option value="manage-pages.php?type=aboutus">Về chúng tôi</option> 
+                  <option value="manage-pages.php?type=contact">Phương thức liên hệ</option>
                 </select>
 									</div>
 								</div>
 <div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">Selected Page</label>
+									<label for="focusedinput" class="col-sm-2 control-label">Chọn trang</label>
 									<div class="col-sm-8">
 									<?php
 			
 			switch($_GET['type'])
 			{
 				case "terms" :
-									echo "Terms and Conditions";
+									echo "Chính sách và bảo mật";
 									break;
 				
 				case "privacy" :
-									echo "Privacy And Policy";
+									echo "Điều khoản sử dụn";
 									break;
 				
 				case "aboutus" :
-									echo "About US";
-									break;
-				case "software" :
-									echo "Offers";
-									break;	
-				case "aspnet" :
-									echo "Vission And MISSION";
-									break;		
-				case "objectives" :
-									echo "Objectives";
-									break;						
-				case "disclaimer" :
-									echo "Disclaimer";
-									break;
-				case "vbnet" :
-									echo "Partner With Us";
-									break;
-				case "candc" :
-									echo "Super Brand";
+									echo "Về chúng tôi";
 									break;
 				case "contact" :
-									echo "Contact Us";
-									break;
-				
-				
-							
-											
+									echo "Phương thức liên hệ";
+									break;				
 				default :
 								echo "";
 								break;
 			
 			}
-			
-			
-			
-			
 			
 			?>
 									</div>
@@ -195,7 +169,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 
 <div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">Package Details</label>
+									<label for="focusedinput" class="col-sm-2 control-label">Mô tả trang</label>
 									<div class="col-sm-8">
 
 
@@ -223,7 +197,7 @@ echo htmlentities($result->detail);
 
 								<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<button type="submit" name="submit" value="Update" id="submit" class="btn-primary btn">Update</button>
+				<button type="submit" name="submit" value="Update" id="submit" class="btn-primary btn">Chỉnh sửa</button>
 
 		
 			</div>

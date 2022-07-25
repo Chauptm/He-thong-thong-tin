@@ -5,15 +5,14 @@
 	<div class="container">
 		<ul class="tp-hd-lft wow fadeInLeft animated" data-wow-delay=".5s">
 			<li class="hm"><a href="index.php"><i class="fa fa-home"></i></a></li>
-			<li class="prnt"><a href="profile.php">My Profile</a></li>
-				<li class="prnt"><a href="change-password.php">Change Password</a></li>
-			<li class="prnt"><a href="tour-history.php">My Tour History</a></li>
-			<li class="prnt"><a href="issuetickets.php">Issue Tickets</a></li>
+			<li class="prnt"><a href="profile.php">Thông tin tài khoản</a></li>
+				<li class="prnt"><a href="change-password.php">Thay đổi mật khẩu</a></li>
+			<li class="prnt"><a href="tour-history.php">Lịch sử book tour</a></li>
 		</ul>
 		<ul class="tp-hd-rgt wow fadeInRight animated" data-wow-delay=".5s"> 
 			<li class="tol">Welcome :</li>				
 			<li class="sig"><?php echo htmlentities($_SESSION['login']);?></li> 
-			<li class="sigi"><a href="logout.php" >/ Logout</a></li>
+			<li class="sigi"><a href="logout.php" >/ Đăng xuất</a></li>
         </ul>
 		<div class="clearfix"></div>
 	</div>
@@ -22,12 +21,12 @@
 	<div class="container">
 		<ul class="tp-hd-lft wow fadeInLeft animated" data-wow-delay=".5s">
 			<li class="hm"><a href="index.php"><i class="fa fa-home"></i></a></li>
-				<li class="hm"><a href="admin/index.php">Admin Login</a></li>
+				<li class="hm"><a href="admin/index.php">Trang Admin</a></li>
 		</ul>
 		<ul class="tp-hd-rgt wow fadeInRight animated" data-wow-delay=".5s"> 
-			<li class="tol">Toll Number : 0379032830</li>				
-			<li class="sig"><a href="#" data-toggle="modal" data-target="#myModal" >Sign Up</a></li> 
-			<li class="sigi"><a href="#" data-toggle="modal" data-target="#myModal4" >/ Sign In</a></li>
+			<li class="tol">Số điện thoại liện hệ : 0379032830</li>				
+			<li class="sig"><a href="#" data-toggle="modal" data-target="#myModal" >Đăng ký</a></li> 
+			<li class="sigi"><a href="#" data-toggle="modal" data-target="#myModal4" >/ Đăng nhập</a></li>
         </ul>
 		<div class="clearfix"></div>
 	</div>
@@ -52,12 +51,12 @@
 				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					<nav class="cl-effect-1">
 						<ul class="nav navbar-nav">
-							<li><a href="index.php">Home</a></li>
-							<li><a href="page.php?type=aboutus">About</a></li>
-								<li><a href="package-list.php">Tour Packages</a></li>
-								<li><a href="page.php?type=privacy">Privacy Policy</a></li>
-								<li><a href="page.php?type=terms">Terms of Use</a></li>
-								<li><a href="page.php?type=contact">Contact Us</a></li>
+							<li><a href="index.php">Trang chủ</a></li>
+							<li><a href="page.php?type=aboutus">Về chúng tôi</a></li>
+								<li><a href="package-list.php">Tour du lịch</a></li>
+								<li><a href="page.php?type=privacy">Chính sách và bảo mật</a></li>
+								<li><a href="page.php?type=terms">Điều khoản sử dụng</a></li>
+								<li><a href="page.php?type=contact">Phương thức liên hệ</a></li>
 								<div class="clearfix"></div>
 
 						</ul>

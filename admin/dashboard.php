@@ -37,7 +37,7 @@
 	<?php include('includes/header.php');?>
 	<!--header end here-->
 			<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.php">Home</a> <i class="fa fa-angle-right"></i></li>
+					<li class="breadcrumb-item"><a href="index.php">Trang chủ</a> <i class="fa fa-angle-right"></i></li>
 				</ol>
 	<!--four-grids here-->
 
@@ -50,7 +50,7 @@
 									<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
 								</div>
 								<div class="four-text">
-									<h3>User</h3>
+									<h3>Người dùng</h3>
 
 									<?php $sql = "SELECT id from tblusers";
 	$query = $dbh -> prepare($sql);
@@ -64,30 +64,14 @@
 								
 							</div>
 						</div>
-					<div class="col-md-3 four-grid">
-							<div class="four-wthree">
-								<div class="icon">
-									<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
-								</div>
-								<div class="four-text">
-									<h3>Toatal packages</h3>
-																		<?php $sql3 = "SELECT PackageId from tbltourpackages";
-	$query3= $dbh -> prepare($sql3);
-	$query3->execute();
-	$results3=$query3->fetchAll(PDO::FETCH_OBJ);
-	$cnt3=$query3->rowCount();
-						?>
-									<h4><?php echo htmlentities($cnt3);?></h4>
-									
-								</div>
-								
-							</div>
 						</div>
 							<div class="clearfix"></div>
 					</div>
 					</div>
 				<?php } elseif($_SESSION['role']==2){?>
+					
 					<div class="four-grids">
+						
 						<div class="col-md-3 four-grid">
 							<div class="four-agileinfo">
 								<div class="icon">
@@ -107,51 +91,56 @@
 								
 							</div>
 						</div>
-						<div class="col-md-3 four-grid">
-							<div class="four-w3ls">
-								<div class="icon">
-									<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
-								</div>
-								<div class="four-text">
-									<h3>Enquiries</h3>
-													<?php $sql2 = "SELECT id from tblenquiry";
-	$query2= $dbh -> prepare($sql2);
-	$query2->execute();
-	$results2=$query2->fetchAll(PDO::FETCH_OBJ);
-	$cnt2=$query2->rowCount();
-						?>
-									<h4><?php echo htmlentities($cnt2);?></h4>
-									
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-md-3 four-grid">
-							<div class="four-w3ls">
-								<div class="icon">
-									<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
-								</div>
-								<div class="four-text">
-									<h3>Issues Riaised</h3>
-													<?php $sql5 = "SELECT id from tblissues";
-	$query5= $dbh -> prepare($sql5);
-	$query5->execute();
-	$results5=$query5->fetchAll(PDO::FETCH_OBJ);
-	$cnt5=$query5->rowCount();
-						?>
-									<h4><?php echo htmlentities($cnt5);?></h4>
-									
-								</div>
-								
-							</div>
-						</div>
+						
 
+						<div class="col-md-3 four-grid">
+							<div class="four-wthree">
+								<div class="icon">
+									<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
+								</div>
+								<div class="four-text">
+									<h3>Tour du lịch</h3>
+																		<?php $sql3 = "SELECT PackageId from tbltourpackages";
+	$query3= $dbh -> prepare($sql3);
+	$query3->execute();
+	$results3=$query3->fetchAll(PDO::FETCH_OBJ);
+	$cnt3=$query3->rowCount();
+						?>
+									<h4><?php echo htmlentities($cnt3);?></h4>
+									
+								</div>
+								
+							</div>
+						</div>
 
 						<div class="clearfix"></div>
 					</div>
-				<?php } else {
-						echo '<h1><a href="dashboard.php">Hello</a></h1>';
-					}
+				<?php } else {?>
+						<div class="four-grids">
+						
+						<div class="col-md-3 four-grid">
+							<div class="four-agileinfo">
+								<div class="icon">
+									<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+								</div>
+								<div class="four-text">
+									<h3>Jobs</h3>
+											<?php $sql1 = "SELECT BookingId from tblbooking";
+	$query1 = $dbh -> prepare($sql1);
+	$query1->execute();
+	$results1=$query1->fetchAll(PDO::FETCH_OBJ);
+	$cnt1=$query1->rowCount();
+						?>
+									<h4><?php echo htmlentities($cnt1);?></h4>
+
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+					<?php }
 				?>
 						
 	<!--//four-grids here-->

@@ -26,10 +26,10 @@ $chngpwd1 = $dbh->prepare($con);
 $chngpwd1-> bindParam(':username', $username, PDO::PARAM_STR);
 $chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
 $chngpwd1->execute();
-$msg="Your Password succesfully changed";
+$msg="Đổi mật khẩu thành công";
 }
 else {
-$error="Your current password is wrong";	
+$error="Đổi mật khẩu thất bại";	
 }
 }
 ?>
@@ -37,7 +37,7 @@ $error="Your current password is wrong";
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>TMS | Admin Change Password</title>
+<title>Chỉnh sửa mật khẩu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -94,57 +94,57 @@ return true;
 				</div>
 <!--heder end here-->
 	<ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard.php">Home</a><i class="fa fa-angle-right"></i>Profile <i class="fa fa-angle-right"></i> Change Password</li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Trang chủ</a><i class="fa fa-angle-right"></i>Thông tin admin <i class="fa fa-angle-right"></i> Thay đổi mật khẩu</li>
             </ol>
 		<!--grid-->
  	<div class="grid-form">
 
   <div class="grid-form1">
 
-  	        	  <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+  	        	  <?php if($error){?><div class="errorWrap"><strong>Thất bại</strong>:<?php echo htmlentities($error); ?> </div><?php } 
+				else if($msg){?><div class="succWrap"><strong>Thành công</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 				
   <div class="panel-body">
 					<form  name="chngpwd" method="post" class="form-horizontal" onSubmit="return valid();">
 
 						<div class="form-group">
-							<label class="col-md-2 control-label">Current Password</label>
+							<label class="col-md-2 control-label">Mật khẩu hiện tại</label>
 							<div class="col-md-8">
 								<div class="input-group">
 									<span class="input-group-addon">
 										<i class="fa fa-key"></i>
 									</span>
-									<input type="password" name="password" class="form-control1" id="exampleInputPassword1" placeholder="Current Password" required="">
+									<input type="password" name="password" class="form-control1" id="exampleInputPassword1" placeholder="Mật khẩu hiện tại" required="">
 								</div>
 							</div>
 						</div>
 
 	<div class="form-group">
-							<label class="col-md-2 control-label">New Password</label>
+							<label class="col-md-2 control-label">Mật khẩu mới</label>
 							<div class="col-md-8">
 								<div class="input-group">
 									<span class="input-group-addon">
 										<i class="fa fa-key"></i>
 									</span>
-									<input type="password" class="form-control1" name="newpassword" id="newpassword" placeholder="New Password" required="">
+									<input type="password" class="form-control1" name="newpassword" id="newpassword" placeholder="Mật khẩu mới" required="">
 								</div>
 							</div>
 						</div>
 
 	<div class="form-group">
-							<label class="col-md-2 control-label">Confirm Password</label>
+							<label class="col-md-2 control-label">Confirm mật khẩu</label>
 							<div class="col-md-8">
 								<div class="input-group">
 									<span class="input-group-addon">
 										<i class="fa fa-key"></i>
 									</span>
-									<input type="password" class="form-control1" name="confirmpassword" id="confirmpassword" placeholder="Confrim Password" required="">
+									<input type="password" class="form-control1" name="confirmpassword" id="confirmpassword" placeholder="Confrim mật khẩu" required="">
 								</div>
 							</div>
 						</div>
 
 						<div class="col-sm-8 col-sm-offset-2">
-				<button type="submit" name="submit" class="btn-primary btn">Submit</button>
+				<button type="submit" name="submit" class="btn-primary btn">Đồng ý</button>
 				<button type="reset" class="btn-inverse btn">Reset</button>
 			</div>
 		</div>

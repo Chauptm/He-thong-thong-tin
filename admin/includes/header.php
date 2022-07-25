@@ -5,7 +5,7 @@
 			if($_SESSION['role']==1){
 				echo '<h1><a href="dashboard.php">Quản lý nhân sự </a></h1>';
 			} elseif($_SESSION['role']==2){
-				echo '<h1><a href="dashboard.php">Quản lý tuor</a></h1>';
+				echo '<h1><a href="dashboard.php">Quản lý tour</a></h1>';
 			}else {
 				echo '<h1><a href="dashboard.php">Check working</a></h1>';
 			}
@@ -29,8 +29,8 @@
 						</div>	
 					</a>
 					<ul class="dropdown-menu drp-mnu">
-						<li> <a href="change-password.php"><i class="fa fa-user"></i> Profile</a> </li> 
-						<li> <a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a> </li>
+						<li> <a href="change-password.php"><i class="fa fa-user"></i> Thông tin admin</a> </li> 
+						<li> <a href="logout.php"><i class="fa fa-sign-out"></i> Đăng xuất</a> </li>
 					</ul>
 				</li>
 			</ul>
