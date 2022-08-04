@@ -43,8 +43,8 @@
 					<a href="offers.html"><i class="fa fa-usd"></i></a>
 				</div>
 				<div class="rup-rgt">
-					<h3>UP TO USD. 50 OFF</h3>
-					<h4><a href="offers.html">TRAVEL SMART</a></h4>
+					<h3>Giảm đến 50%</h3>
+					<h4><a href="offers.html">Du lịch thông minh</a></h4>
 					
 				</div>
 					<div class="clearfix"></div>
@@ -54,8 +54,8 @@
 					<a href="offers.html"><i class="fa fa-h-square"></i></a>
 				</div>
 				<div class="rup-rgt">
-					<h3>UP TO 70% OFF</h3>
-					<h4><a href="offers.html">ON HOTELS ACROSS WORLD</a></h4>
+					<h3>Tìm kiếm thời gian</h3>
+					<h4><a href="offers.html">Chất lượng tốt nhất</a></h4>
 					
 				</div>
 					<div class="clearfix"></div>
@@ -65,8 +65,8 @@
 					<a href="offers.html"><i class="fa fa-mobile"></i></a>
 				</div>
 				<div class="rup-rgt">
-					<h3>FLAT USD. 50 OFF</h3>
-					<h4><a href="offers.html">US APP OFFER</a></h4>
+					<h3>Thanh toán linh hoạt</h3>
+					<h4><a href="offers.html">Hỗ trợ tận tình</a></h4>
 				
 				</div>
 					<div class="clearfix"></div>

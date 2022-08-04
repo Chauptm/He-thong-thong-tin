@@ -18,7 +18,7 @@
 			foreach($results as $result){
 				$fromdate= $result->FromDate;
 				$fromdate= strtotime($fromdate);
-				$n = time()+ 47*60*60;
+				$n = time()+ 90*60*60;
 				if($n<$fromdate){
 					$status=2;
 					$cancelby='u';
@@ -32,7 +32,7 @@
 
 					$msg="Hủy tour thành công";
 				}else{
-					$error="Hủy tour phải thực hiện trước 2 ngày tính từ ngày xuất phát";
+					$error="Hủy tour phải thực hiện trước 4 ngày tính từ ngày xuất phát";
 				}
 			}
 		}
@@ -99,8 +99,6 @@
 						<th>#</th>
 						<th>Booking Id</th>
 						<th>Tour du lịch</th>	
-						<th>Ngày đi/Ngày vè</th>
-						<th>Người lớn/Trẻ em</th>
 						<th>Tổng tiền</th>
 						<th>Comment</th>
 						<th>Trạng thái</th>
@@ -121,9 +119,7 @@
 					<tr align="center">
 						<td><?php echo htmlentities($cnt);?></td>
 						<td>#BK<?php echo htmlentities($result->bookid);?></td>
-						<td><a href="package-details.php?pkgid=<?php echo htmlentities($result->pkgid);?>"><?php echo htmlentities($result->packagename);?></a></td>
-						<td><?php echo htmlentities($result->fromdate);?>/<?php echo htmlentities($result->todate);?></td>
-						<td><?php echo htmlentities($result->adults);?>/<?php echo htmlentities($result->childs);?></td>
+						<td><a href="comment.php?pkgid=<?php echo htmlentities($result->pkgid);?>&bkid=<?php echo htmlentities($result->bookid);?>"><?php echo htmlentities($result->packagename);?></a></td>
 						<td><?php echo htmlentities($result->price);?></td>
 						<td><?php echo htmlentities($result->comment);?></td>
 						<td><?php if($result->status==0){

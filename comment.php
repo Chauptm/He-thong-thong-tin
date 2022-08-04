@@ -2,66 +2,43 @@
 	session_start();
 	error_reporting(0);
 	include('includes/config.php');
+	if(strlen($_SESSION['login'])==0){	
+		header('location:index.php');
+	}else{
 	if(isset($_POST['submit2'])){
-		$pid=intval($_GET['pkgid']);
-		$useremail=$_SESSION['login'];
-		$fromdate=$_POST['fromdate'];
-		$todate=$_POST['todate'];
-		$adults = $_POST['adults'];
-		$childs = $_POST['childs'];
+		$bid=intval($_GET['bkid']);
+		$email=$_SESSION['login'];
+		$sql ="SELECT FromDate FROM tblbooking WHERE UserEmail=:email and BookingId=:bid";
+		$query= $dbh -> prepare($sql);
+		$query-> bindParam(':email', $email, PDO::PARAM_STR);
+		$query-> bindParam(':bid', $bid, PDO::PARAM_STR);
+		$query-> execute();
+		$results = $query -> fetchAll(PDO::FETCH_OBJ);
+		if($query->rowCount() > 0){
+			foreach($results as $result){
+				$todate= $result->ToDate;
 
-		$f= strtotime($fromdate);
-		$t= strtotime($todate);
-		$n= time()+24*5*60*60;
-		
-		if ($f<$n){
-			$error="Ngày book tour phải trước 6 ngày. Hãy chọn ngày khác.";
-		}else if ($f>$t){
-			$error ="Ngày về phải lớn hơn ngày đi. Hãy chọn ngày khác";
-		}else if ($adults<0){
-			$error="Số người phải lớn hơn 0";
-		}else if ($childs<0){
-			$error="Số người phải lớn hơn 0";
-		}else{
-			
-			$status=0;
-			$checkjob = 0;
-
-			$sql = "SELECT * from tbltourpackages where PackageId=:pid";
-			$query = $dbh->prepare($sql);
-			$query -> bindParam(':pid', $pid, PDO::PARAM_STR);
-			$query->execute();
-			$results=$query->fetchAll(PDO::FETCH_OBJ);
-			if($query->rowCount() > 0){
-				foreach($results as $result){	
-					$price = $result->PackagePrice;
-					$total = $price*$adults*(($t-$f)/24/60/60+1);
-					
-					$sql="INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Adults, Childs, status, checkjob, Price) VALUES(:pid,:useremail,:fromdate,:todate,:adults,:childs, :status, :checkjob, :price)";
+				$todate= strtotime($todate);
+				$n = time();
+                echo ($todate);
+              
+				if($n>$todate){
+					$comment=$_POST['comment'];
+					$sql = "UPDATE tblbooking SET Comment=:comment WHERE UserEmail=:email and BookingId=:bid";
 					$query = $dbh->prepare($sql);
-					$query->bindParam(':pid',$pid,PDO::PARAM_STR);
-					$query->bindParam(':useremail',$useremail,PDO::PARAM_STR);
-					$query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-					$query->bindParam(':todate',$todate,PDO::PARAM_STR);
-					$query->bindParam(':adults',$adults,PDO::PARAM_STR);
-					$query->bindParam(':childs',$childs,PDO::PARAM_STR);
-					
-					$query->bindParam(':status',$status,PDO::PARAM_STR);
-					$query->bindParam(':checkjob',$checkjob,PDO::PARAM_STR);
-					$query->bindParam(':price',$total,PDO::PARAM_STR);
-					$query->execute();
-					$lastInsertId = $dbh->lastInsertId();
-					if($lastInsertId){
-						$msg="Book tour thành công";
-					}else {
-						$error="Book tour không thành công. Xin thử lại.";
-					}
+					$query -> bindParam(':comment',$comment , PDO::PARAM_STR);
+					$query-> bindParam(':email',$email, PDO::PARAM_STR);
+					$query-> bindParam(':bid',$bid, PDO::PARAM_STR);
+					$query -> execute();
+
+					$msg="Comment thành công";
+				}else{
+					$error="Comment thực hiện sau khi kết thúc chuyến đi";
 				}
 			}
-
 		}
-
 	}
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -125,6 +102,13 @@
 				$query->execute();
 				$results=$query->fetchAll(PDO::FETCH_OBJ);
 				$cnt=1;
+
+                $bkid=intval($_GET['bkid']);
+				$sql1 = "SELECT * from tblbooking where BookingId=:bkid";
+				$query1 = $dbh->prepare($sql1);
+				$query1 -> bindParam(':bkid', $bkid, PDO::PARAM_STR);
+				$query1->execute();
+				$results1=$query1->fetch(PDO::FETCH_OBJ);
 				if($query->rowCount() > 0){
 					foreach($results as $result){	?>
 
@@ -142,21 +126,21 @@
 								<div class="ban-bottom">
 									<div class="bnr-right">
 										<label class="inputLabel">Ngày đi</label>
-										<input class="date" id="datepicker" type="text" placeholder="dd-mm-yyyy"  name="fromdate" required="">
+										<input  name="fromdate" required="" value="<?php echo htmlentities($results1->FromDate);?>" readonly  style="border:none; border-bottom:1px solid rgba(0,0,0,.12);">
 									</div>
 									<div class="bnr-right">
 										<label class="inputLabel">Ngày về</label>
-										<input class="date" id="datepicker1" type="text" placeholder="dd-mm-yyyy" name="todate" required="">
+										<input  name="todate" required="" value="<?php echo htmlentities($results1->ToDate);?>" readonly  style="border:none; border-bottom:1px solid rgba(0,0,0,.12);">
 									</div>
 								</div>
 								<div class="ban-bottom">
 									<div class="bnr-right"  style="margin-top: 30px;">
 										<label class="inputLabel">Số người lớn</label>
-										<input id="adults" type="number" name="adults" required="" style="border:none; border-bottom:1px solid rgba(0,0,0,.12);">
+										<input id="adults" type="number" name="adults" required="" style="border:none; border-bottom:1px solid rgba(0,0,0,.12);" value= "<?php echo htmlentities($results1->Adults);?>" readonly>
 									</div>
 									<div class="bnr-right"  style="margin-top: 30px;">
 										<label class="inputLabel">Số trẻ em</label>
-										<input id="childs" type="number" name="childs" required="" style="border:none; border-bottom:1px solid rgba(0,0,0,.12);">
+										<input id="childs" type="number" name="childs" required="" style="border:none; border-bottom:1px solid rgba(0,0,0,.12);" value = "<?php echo htmlentities($results1->Childs);?>" readonly>
 									</div>
 								</div>
 							<div class="clearfix"></div>
@@ -169,14 +153,16 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="selectroom_top">
-				
 				<div class="selectroom-info animated wow fadeInUp animated" data-wow-duration="1200ms" data-wow-delay="500ms" style="visibility: visible; animation-duration: 1200ms; animation-delay: 500ms; animation-name: fadeInUp; margin-top: -70px">
 					<ul>
-
+						<li class="spe">
+							<label class="inputLabel">Comment</label>
+							<input class="special" type="text" name="comment" required="">
+						</li>
 						<?php if($_SESSION['login'])
 						{?>
 							<li class="spe" align="center">
-						<button type="submit" name="submit2" class="btn-primary btn">Đặt tour</button>
+						<button type="submit" name="submit2" class="btn-primary btn">Comment</button>
 							</li>
 							<?php } else {?>
 								<li class="sigi" align="center" style="margin-top: 1%">

@@ -17,8 +17,8 @@
 				foreach($results as $result){
 					$fromdate= $result->FromDate;
 					$fromdate= strtotime($fromdate);
-					$n = time()+ 47*60*60;
-					if ($n>$fromdate){
+					$n = time();
+					if ($n>$fromdate-90*60*60 && $n<$fromdate-45*60*60){
 						$status=2;
 						$cancelby='a';
 						$sql = "UPDATE tblbooking SET status=:status,CancelledBy=:cancelby WHERE  BookingId=:bid";
@@ -30,7 +30,7 @@
 
 						$msg="Hủy booking thành công";
 					}else {
-						$error = "Thời gian hủy là trong 2 ngày trước ngày xuất phát";
+						$error = "Thời gian hủy là trong 2 ngày đầu tiên trước ngày xuất phát 4 ngày";
 					}
 				}
 			}
@@ -49,8 +49,8 @@
 				foreach($results as $result){
 					$fromdate= $result->FromDate;
 					$fromdate= strtotime($fromdate);
-					$n = time()+ 47*60*60;
-					if ($n>$fromdate){
+					$n = time();
+					if ($n>$fromdate-90*60*60 && $n<$fromdate-45*60*60){
 						$status=1;
 						$cancelby='a';
 						$sql = "UPDATE tblbooking SET status=:status WHERE BookingId=:bcid";
@@ -60,7 +60,7 @@
 						$query -> execute();
 						$msg="Booking đã được xác nhận";
 					}else {
-						$error = "Thời gian xác nhận là trong 2 ngày trước ngày xuất phát";
+						$error = "Thời gian xác nhận là trong 2 ngày đầu tiên trước ngày xuất phát 4 ngày";
 					}
 				}
 			}
